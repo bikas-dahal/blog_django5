@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.db.models.functions import Now
+from taggit.managers import TaggableManager
+
 
 
 
@@ -24,6 +26,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     body = models.TextField()
+    tags = TaggableManager()
     objects = models.Manager() # The default manager.
     published = PublishedManager() # Our custom manager.
     author = models.ForeignKey(

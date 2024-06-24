@@ -1,0 +1,80 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main page</title>
+
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            border: 0;
+            background-color: brown;
+        }
+        a{
+            text-decoration: none;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+        main h1{
+            font-size: 35px;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            text-align: center;
+            margin: 25px;
+        }
+        main img{
+            width: 200px;
+            height: 200px;
+            margin: 25px;
+            padding: 25px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 25px;
+            box-shadow: 0 0 25px 2.5px rgb(255, 255, 255);
+        }
+        main div button{
+            width: 200px;
+            height: 50px;
+            margin: 25px;
+            background-color: rgb(47,177,212);
+            border: 0;
+            border-radius: 10px;
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 0 7px 0.1px rgb(255, 255, 255);
+        }
+        main div button:hover{
+            background-color: rgb(113, 219, 248);
+        }
+        main div button:active{
+            background-color: rgb(26, 146, 179);
+        }
+    </style>
+
+</head>
+<body>
+
+    <main>
+
+        <h1>The best chat application ever !!!</h1>
+        <img src="{% static 'chat/chat.png' %}">
+
+        <div>
+            <a href="{% url "register" %}"><button>New Memper</button></a>
+            <a href="{% url "login" %}"><button>Old Memper</button></a>
+        </div>
+
+    </main>
+    
+</body>
+</html>

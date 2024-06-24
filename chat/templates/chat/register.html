@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+
+        html{
+            width: 100%;
+        }
+
+        body{
+            padding: 10px;
+            margin: 10px;
+            border: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            height: 100%;
+
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: center;
+
+            width: 100%;
+            max-width: 550px;
+        }
+
+        input{
+            margin: 10px;
+            padding: 10px;
+
+            border-style: solid;
+            border-width: 2.5px;
+            border-color: brown;
+            border-radius: 10px;
+
+            height: 35px;
+
+            font-size: larger;
+        }
+
+        h1{
+            color: brown;
+            font-size: 25px;
+        }
+
+        button{
+            margin: 10px;
+            padding: 0;
+            height: 45px;
+            color: rgb(255, 255, 255);
+            background-color: brown;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        button:hover{
+            background-color: rgb(170, 85, 85);
+        }
+
+        button:active{
+            background-color: rgb(120, 25, 25);
+        }
+
+
+        p{
+            color: brown;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+
+        .there_is_an_error{
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            background-color: rgba(255, 0, 0, 0.55);
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Register</h1>
+
+    {% if error %}
+    <p class="there_is_an_error">{{ error }}</p>
+    {% endif %}
+
+    
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="text" name="username" placeholder="Username">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="password">
+
+        <button>Register</button>
+    </form>
+
+    <p>if you have an account you can <a href="{% url "login" %}">Login</a></p>
+    
+</body>
+</html>

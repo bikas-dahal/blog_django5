@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background-color: rgb(225, 225, 225);
+        }
+
+        header p{
+            font-weight: bolder;
+            color: rgb(0, 135, 175);
+            margin: 10px;
+        }
+
+        header button{
+            margin: 10px;
+            border: 0;
+            border-radius: 10px;
+            background-color: rgb(185, 0, 0);
+            color: rgb(255, 255, 255);
+            width: 125px;
+            height: 35px;
+        }
+        header button:hover{
+            background-color: rgb(228, 0, 0);
+        }
+
+        header button:active{
+            background-color: rgb(139, 0, 0);
+        }
+
+        main{
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        section{
+            background-color: rgb(255, 220, 180);
+            margin: 10px;
+            padding: 5px;
+            width: 200px;
+            height: 200px;
+            border: 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: column;
+
+            cursor: pointer;
+        }
+
+        section img{
+            padding: 5px;
+            border-width: 2.5px;
+            border-color: rgb(0, 0, 0);
+            border-style: solid;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        section p{
+            font-size: larger;
+            color: rgb(55, 90, 100);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <p>Username : {{ user.username}}</p>
+        <p>Name : {{ user.first_name}}{{ user.last_name}}</p>
+        <a href="{% url "logout" %}"><button>Logout</button></a>
+    </header>
+    
+    <main>
+
+        {% for user in users %}
+
+        <a href="/chat/chat_person/{{ user.id }}"><section>
+            <img src="{% static "chat/face.png" %}">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+        </section></a>
+
+        {% endfor %}
+    </main>
+
+</body>
+</html>
